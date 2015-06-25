@@ -21,24 +21,35 @@ namespace KuasCore.Dao.Impl
 
         public void AddCourse(Course course)
         {
-            string command = @"INSERT INTO Course (Course_Id, Course_Name, Course_Description) VALUES (@Id, @Name, @Description);";
+            string command = @"INSERT INTO Course (Course_Id, Course_Name, Course_Description,Course_Tel,Course_Start,Course_End,Course_Here,Course_Rest) VALUES (@Id, @Name, @Description,@Tel,@Start,@End,@Here,@Rest);";
 
             IDbParameters parameters = CreateDbParameters();
-            parameters.Add("Id", DbType.String).Value = course.Id;
+            parameters.Add("Id", DbType.String).Value = course.Tel;
             parameters.Add("Name", DbType.String).Value = course.Name;
             parameters.Add("Description", DbType.String).Value = course.Description;
+            parameters.Add("Tel", DbType.String).Value = course.Tel;
+            parameters.Add("Start", DbType.String).Value = course.Start;
+            parameters.Add("End", DbType.String).Value = course.End;
+            parameters.Add("Here", DbType.String).Value = course.Here;
+            parameters.Add("Rest", DbType.String).Value = course.Rest;
 
             ExecuteNonQuery(command, parameters);
         }
 
         public void UpdateCourse(Course course)
         {
-            string command = @"UPDATE Course SET Course_Name = @Name, Course_Description = @Description WHERE Course_Id = @Id;";
+            string command = @"UPDATE Course SET Course_Name = @Name, Course_Description = @Description, Course_Tel = @Tel, Course_Start = @Start, Course_End = @End, Course_Here = @Here, Course_Rest = @Rest     WHERE Course_Id = @Id;";
 
             IDbParameters parameters = CreateDbParameters();
             parameters.Add("Id", DbType.String).Value = course.Id;
             parameters.Add("Name", DbType.String).Value = course.Name;
             parameters.Add("Description", DbType.String).Value = course.Description;
+            parameters.Add("Tel", DbType.String).Value = course.Tel;
+            parameters.Add("Start", DbType.String).Value = course.Start;
+            parameters.Add("End", DbType.String).Value = course.End;
+            parameters.Add("Here", DbType.String).Value = course.Here;
+            parameters.Add("Rest", DbType.String).Value = course.Rest;
+
 
             ExecuteNonQuery(command, parameters);
         }
