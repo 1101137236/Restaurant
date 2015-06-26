@@ -152,47 +152,45 @@
 
         $(document).ready(function () {
             var UrlBase = "/";
-            //var insertDialog = $("#insertDialog");
+            $(document).ready(function () {
+                var UrlBase = "/";
+                var insertDialog = $("#insertDialog");
+                insertDialog.hide();
 
-            //$("#insertButton").click(function (e) {
-            //    insertDialog.data("kendoWindow").open();
-            //});
-           
-            //insertDialog.kendoWindow({
-            //    width: "505px",
-            //    height: "315px",
-            //    title: "新增哦",
-            //    actions: ["Pin", "Refresh", "Maximize", "Close"]
-            //});
+                $("#insertButton").click(function (e) {
+                    insertDialog.kendoWindow({
+                        width: "505px",
+                        height: "315px",
+                        title: "------新增------",
+                        actions: ["Pin", "Refresh", "Maximize", "Close"],
 
-            //$("#submitButton").click(function (e) {
-            //    insert();
-            //    insertDialog.data("kendoWindow").close();
-            //});
-
-            
-            /////////
-
-            $("#insertButton").kendoButton({
-                icon: "plus"
-            });
-
-            $("#Start").kendoDropDownList({
-            });
-
-            $("#End").kendoDropDownList({
-            });
-
-            $("#Rest").kendoDropDownList({
-            });
-          
-
-
-            
+                    });
+                    insertDialog.data("kendoWindow").open();
+                });
 
 
 
 
+                $("#submitButton").click(function (e) {
+                    insert();
+                    insertDialog.data("kendoWindow").close();
+                });
+
+
+                /////////
+
+                $("#insertButton").kendoButton({
+                    icon: "plus"
+                });
+
+                $("#Start").kendoDropDownList({
+                });
+
+                $("#End").kendoDropDownList({
+                });
+
+                $("#Rest").kendoDropDownList({
+                });
 
 
 
@@ -201,7 +199,15 @@
 
 
 
-                
+
+
+
+
+
+
+
+
+
                 $("#grid").kendoGrid({
                     dataSource: {
                         pageSize: 5,
@@ -327,31 +333,31 @@
                     ]
                 });
 
-        });
-        function insert() {
-            $.ajax({
-                url: "/api/Course",
-                type: 'POST',
-                data: {
-                    Id: $("#Tel").val(),
-                    Name: $("#Name").val(),
-                    Address: $("#Address").val(),
-                    Tel: $("#Tel").val(),
-                    Start: $("#Start").val(),
-                    End: $("#End").val(),
-                    Here: $("#Here").val(),
-                    Rest: $("#Rest").val()
-                },
-                dataType: 'json',
-                success: function (data) {
-                    alert("success");
-                },
-                error: function (data) {
-                    alert("error");
-                }
             });
-        }
-        
+            function insert() {
+                $.ajax({
+                    url: "/api/Course",
+                    type: 'POST',
+                    data: {
+                        Id: $("#Tel").val(),
+                        Name: $("#Name").val(),
+                        Description: $("#Address").val(),
+                        Tel: $("#Tel").val(),
+                        Start: $("#Start").val(),
+                        End: $("#End").val(),
+                        Here: $("#Here").val(),
+                        Rest: $("#Rest").val()
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (data) {
+                        alert("error");
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
