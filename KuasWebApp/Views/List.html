@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />
+
+    <script src="http://cdn.kendostatic.com/2015.1.429/js/jquery.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.1.429/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <!--</div>-->
+
+    <div class="content-pane">
+        <button type="button" id="insertButton" class="k-button" style="background-color:#EBF5FF" onclick="window.open">新增</button>
+        <div id="insertDialog">
+            <ul id="fieldlist">
+                <li>
+                    <label for="Name" class="required">店名</label>
+                    <input type="text" id="Name" name="Name" class="k-textbox" placeholder="請輸入店名" required validationmessage="Enter {0}" style="width: 220px;" />
+                </li>
+                <li>
+                    <label for="Address" class="required">地址</label>
+                    <input type="text" id="Address" name="Address" class="k-textbox" placeholder="請輸入地址" required validationmessage="Enter {0}" style="width: 220px;" />
+                </li>
+                <li>
+                    <label for="Tel" class="required">電話</label>
+                    <input type="text" id="Tel" name="Tel" class="k-textbox" placeholder="請輸入電話" required validationmessage="Enter {0}" style="width: 220px;" />
+                </li>
+                <li>
+                    <label for="Start">開始營業時間</label>
+                    <select name="Start" id="Start" required data-required-msg="Select start time" style="width: 220px;">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                    <span class="k-invalid-msg" data-for="time"></span>
+                </li>
+                <li>
+                    <label for="End">結束營業時間</label>
+                    <select name="End" id="End" required data-required-msg="Select start time" style="width: 220px;">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                    <span class="k-invalid-msg" data-for="time"></span>
+                </li>
+                <li>
+                    <label for="Here">是否可以內用</label>
+                    <label>
+                        是
+                        <input type="radio" id="Here" name="Here" value="是" data-bind="checked: radio" />
+                    </label>
+                    <label>
+                        否
+                        <input type="radio" id="Here" name="Here" value="否" data-bind="checked: radio" />
+                    </label>
+                </li>
+                <li>
+                    <label for="Rest">公休日</label>
+                    <select name="Rest" id="Rest" required data-required-msg="Select start time" style="width: 220px;">
+                        <option>星期一</option>
+                        <option>星期二</option>
+                        <option>星期三</option>
+                        <option>星期四</option>
+                        <option>星期五</option>
+                        <option>星期六</option>
+                        <option>星期日</option>
+                    </select>
+                    <span class="k-invalid-msg" data-for="time"></span>
+                </li>
+            </ul>
+            <button type="button" id="submitButton" class="k-button" style="background-color:#EBF5FF" >送出</button>
+        </div>
+        <div id="grid"></div>
+    </div>
+    <style>
+        #example {
+            min-height: 500px;
+        }
+
+        #undo {
+            text-align: center;
+            position: absolute;
+            white-space: nowrap;
+            padding: 1em;
+            cursor: pointer;
+        }
+
+        .armchair {
+            float: left;
+            margin: 30px 30px 120px 30px;
+            text-align: center;
+        }
+
+            .armchair img {
+                display: block;
+                margin-bottom: 10px;
+            }
+    </style>
+
+
+
+    <script>
+
+
+
+        $(document).ready(function () {
+            var UrlBase = "/";
+            //var insertDialog = $("#insertDialog");
+
+            //$("#insertButton").click(function (e) {
+            //    insertDialog.data("kendoWindow").open();
+            //});
+           
+            //insertDialog.kendoWindow({
+            //    width: "505px",
+            //    height: "315px",
+            //    title: "新增哦",
+            //    actions: ["Pin", "Refresh", "Maximize", "Close"]
+            //});
+
+            //$("#submitButton").click(function (e) {
+            //    insert();
+            //    insertDialog.data("kendoWindow").close();
+            //});
+
+            
+            /////////
+
+            $("#insertButton").kendoButton({
+                icon: "plus"
+            });
+
+            $("#Start").kendoDropDownList({
+            });
+
+            $("#End").kendoDropDownList({
+            });
+
+            $("#Rest").kendoDropDownList({
+            });
+          
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                $("#grid").kendoGrid({
+                    dataSource: {
+                        pageSize: 5,
+                        dataType: "jsonp",
+                        transport: {
+                            read: {
+                                url: UrlBase + "api/Course",
+                                contentType: "application/json; charset=utf-8",
+                                type: "GET"
+                            },
+                            create: {
+                                url: UrlBase + "api/Course",
+                                contentType: "application/json; charset=utf-8",
+                                type: "POST"
+                            },
+                            update: {
+                                url: UrlBase + "api/Course",
+                                contentType: "application/json; charset=utf-8",
+                                type: "PUT"
+                            },
+                            destroy: {
+                                url: UrlBase + "api/Course",
+                                contentType: "application/json; charset=utf-8",
+                                type: "DELETE"
+                            },
+                            parameterMap: function (data, operation) {
+                                if (operation !== "read") {
+                                    return kendo.stringify(data);
+                                }
+                            }
+                        },
+                        schema: {
+                            model: {
+                                id: "Id",
+                                fields: {
+
+                                    Id: { type: "string", editable: true, nullable: false },
+                                    Name: { type: "string", editable: true, nullable: false },
+                                    Description: { type: "string", editable: true },
+                                    Tel: { type: "string", editable: true },
+                                    Start: { type: "string", editable: true },
+                                    End: { type: "string", editable: true },
+                                    Here: { type: "string", editable: true },
+                                    Rest: { type: "string", editable: true },
+                                }
+                            }
+                        }
+
+                    },
+                    height: 550,
+                    sortable: true,
+                    scrollable: true,
+                    sortable: true,
+                    filterable: {
+                        mode: "row"
+                    },
+                    editable: "inline",
+                    toolbar: ["create", "save", "cancel"],
+                    pageable: {
+                        input: true,
+                        numeric: false
+                    }, cell: {
+                        showOperators: false
+                    },
+                    navigatable: false,
+                    columns: [
+               {
+                   field: "Name", title: "店名", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   field: "Description", title: "地址", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   field: "Tel", title: "電話", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   field: "Start", title: "開始時間", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   field: "End", title: "結束時間", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   field: "Here", title: "是否可內用", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   field: "Rest", title: "休息日", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               },
+               {
+                   command: ["edit", "destroy"], title: "Command", width: "auto", filterable: {
+                       cell: {
+                           showOperators: false
+                       }
+                   }
+               }
+                    ]
+                });
+
+        });
+        function insert() {
+            $.ajax({
+                url: "/api/Course",
+                type: 'POST',
+                data: {
+                    Id: $("#Tel").val(),
+                    Name: $("#Name").val(),
+                    Address: $("#Address").val(),
+                    Tel: $("#Tel").val(),
+                    Start: $("#Start").val(),
+                    End: $("#End").val(),
+                    Here: $("#Here").val(),
+                    Rest: $("#Rest").val()
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert("success");
+                },
+                error: function (data) {
+                    alert("error");
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,164 +1,127 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Employee</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.common-material.min.css" />
-    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css" />
-    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />
+    <title>幼幼賞菜坊</title>
 
-    <script src="http://cdn.kendostatic.com/2015.1.429/js/jquery.min.js"></script>
-    <script src="http://cdn.kendostatic.com/2015.1.429/js/kendo.all.min.js"></script>
+    <base href="http://demos.telerik.com/kendo-ui/menu/index">
+    <style>
+        html {
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.2.624/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.2.624/styles/kendo.material.min.css" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://cdn.kendostatic.com/2015.2.624/js/jquery.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.2.624/js/kendo.all.min.js"></script>
 </head>
 <body>
-    
-    <div class="content-pane">
-        <img src="cover.png" style="width:1250px;height:300px">
-        <div id="grid"></div>
+    <div id="example">
+        <div id="megaStore" class="demo-section">
+            <ul id="menu">
+                <li>
+                    關於我們
+                </li>
+                <li>
+                    最新消息
+                </li>
+                <li>
+                    美食名單
+                    <ul>
+                        <!-- moving the UL to the next line will cause an IE7 problem -->
+                        <li>北部</li>
+                        <li>中部</li>
+                        <li>南部</li>
+                    </ul>
+                </li>
+
+                <li disabled="disabled">
+                    舉報
+                </li>
+            </ul>
+        </div>
+
+        <style>
+            #megaStore {
+                max-width: 600px;
+                margin: 30px auto;
+                padding-top: 120px;
+                background-image: url(indeximg.jpg) no-repeat center 0;
+            }
+
+            #menu h2 {
+                font-size: 1em;
+                text-transform: uppercase;
+                padding: 5px 10px;
+            }
+
+            #template img {
+                margin: 5px 20px 0 0;
+                float: left;
+            }
+
+            #template {
+                width: 380px;
+            }
+
+                #template ol {
+                    float: left;
+                    margin: 0 0 0 30px;
+                    padding: 10px 10px 0 10px;
+                }
+
+                #template:after {
+                    content: ".";
+                    display: block;
+                    height: 0;
+                    clear: both;
+                    visibility: hidden;
+                }
+
+                #template .k-button {
+                    float: left;
+                    clear: left;
+                    margin: 5px 0 5px 12px;
+                }
+        </style>
+        <script>
+            $(document).ready(function() {
+                $("#menu").kendoMenu();
+            });
+        </script>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="indeximg.jpg">
+            </a>
+            <div class="jumbotron">
+
+
+                <h2>我的美食口袋名單</h2>
+                <p>
+                    <br>
+                    現代美食在人們的生活中佔了很大的部份，不管經濟有多麼的不好、心情有多差、被老闆老師罵的有多臭頭，還是得飽餐一頓，就算食物在簡單，但是味道一定要夠好，美食簡直是人們生活中的大角色。
+                    </br>
+                    <br>
+                    然而飲食已經不是單單滿足口腹之慾而已，它卻是一個重要的文化指標。 所以王爾德曾說 : 「我最無法忍受那些沒把美食認真看待的人！」可見飲食在人類生活中的重要性有多大了！
+                    </br>
+                    台灣美食未來的趨勢也許會邁向國際路線，融合傳統以及現代口味，主要是講求在衛生的環境，創造出無限的幸福，來滿足人類的無限慾望。
+                    </br>
+                    每個人對於美食的定義不同，所以對於美食總是有許多不同的看法，也才會造就出不同口味的美食，</br>
+                    例如：薯條以前只有加胡椒粉，現在卻多出了許多種口味，像是梅甘粉、海苔粉、咖哩粉、辣椒芥末...等。</br>
+                    許多種不同的口味開始被發掘出來，就因為美食的好吃與否是因人而異，所以才更顯得美食的價值吧！</br>
+
+                    摘自<a href="http://www.shute.kh.edu.tw/~d09815a/web01/b.html">[關於美食]</a>部落格
+                </p>
+            </div>
+        </div>
     </div>
    
+    
 
-    <script>
-         $(document).ready(function () {
-             var UrlBase = "/";
-             $("#grid").kendoGrid({
-                 dataSource: {
-                     pageSize: 5,
-                     dataType: "jsonp",
-                     transport: {
-                         read: {
-                             url: UrlBase+"api/Course",
-                             contentType: "application/json; charset=utf-8",
-                             type: "GET"
-                         },
-                         create: {
-                             url: UrlBase+"api/Course",
-                             contentType: "application/json; charset=utf-8",
-                             type: "POST"
-                         },
-                         update: {
-                             url: UrlBase+"api/Course",
-                             contentType: "application/json; charset=utf-8",
-                             type: "PUT"
-                         },
-                         destroy: {
-                             url: UrlBase + "api/Course",
-                             contentType: "application/json; charset=utf-8",
-                             type: "DELETE"
-                         },
-                         parameterMap: function (data, operation) {
-                             if (operation !== "read") {
-                                 return kendo.stringify(data);
-                             }
-                         }
-                     },
-                     schema: {
-                         model: {
-                             id: "Id",
-                             fields: {
-
-                                 Id  : { type: "string", editable: true, nullable: false },
-                                 Name: { type: "string", editable: true, nullable: false },
-                                 Description: { type: "string", editable: true },
-                                 Tel: { type: "string", editable: true },
-                                 Start: { type: "string", editable: true },
-                                 End: { type: "string", editable: true },
-                                 Here: { type: "string", editable: true },
-                                 Rest: { type: "string", editable: true },
-                             }
-                         }
-                     }
-
-                 },
-                 height: 550,
-                 sortable: true,
-                 scrollable: true,
-                 sortable: true,
-                 filterable: {
-                     mode: "row"
-                 },
-                 editable: "inline",
-                 toolbar: ["create", "save", "cancel"],
-                 pageable: {
-                     input: true,
-                     numeric: false
-                 },cell: {
-                     showOperators: false
-                 },
-                 navigatable: false,
-                 columns: [
-            {
-                field: "Name", title: "店名", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                field: "Description", title: "地址", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                field: "Tel", title: "電話", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                field: "Start", title: "開始時間", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                field: "End", title: "結束時間", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                field: "Here", title: "是否可內用", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                field: "Rest", title: "休息日", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            },
-            {
-                command: ["edit", "destroy"], title: "Command", width: "auto", filterable: {
-                    cell: {
-                        showOperators: false
-                    }
-                }
-            }
-                 ]
-                 //columns: [
-                 //    { field: "Id"  , title: "編號" , width: "100px" },
-                 //    { field: "Name", title: "店名", width: "100px" },
-                 //    { field: "Description", title: "地址", width: "160px" },
-                 //    { field: "Tel", title: "電話", width: "160px" },
-                 //    { field: "Start", title: "開始時間", width: "160px" },
-                 //    { field: "End", title: "結束時間", width: "160px" },
-                 //    { field: "Here", title: "是否可內用", width: "160px" },
-                 //    { field: "Rest", title: "休息日", width: "160px" },
-                 //    { command: ["edit", "destroy"], title: "Command", width: "250px" }
-                 //]
-             });
-
-         });
-    </script>
 </body>
 </html>
