@@ -18,39 +18,35 @@
     <script src="http://cdn.kendostatic.com/2015.2.624/js/kendo.all.min.js"></script>
 </head>
 <body>
-    <div id="example">
-        <div id="megaStore" class="demo-section">
-            <a href="#" class="thumbnail">
-                <img src="">
-            </a>
-            <ul id="menu">
-                <li>
-                    關於我們
-                </li>
-                <li>
-                    最新消息
-                </li>
-                <li>
-                    美食名單
-                    <ul>
-                        <!-- moving the UL to the next line will cause an IE7 problem -->
-                        <li > <a href="List.html">北部</a></li>
-                        <li>中部</li>
-                        <li>南部</li>
-                    </ul>
-                </li>
-
-                <li disabled="disabled">
-                    舉報
-                </li>
-            </ul>
-        </div>
+        
+    <div id="megaStore" class="demo-section" style="align-content:center; margin:auto;">
+        <img src="cover.png">
+        <ul id="menu">
+            <li>
+                關於我們
+            </li>
+            <li>
+                最新消息
+            </li>
+            <li>
+                美食名單
+                <ul>
+                    <!-- moving the UL to the next line will cause an IE7 problem -->
+                    <li> <a href="List.html">北部</a></li>
+                    <li>中部</li>
+                    <li>南部</li>
+                </ul>
+            </li>
+            <li disabled="disabled">
+                舉報
+            </li>
+        </ul>
 
         <style>
             #megaStore {
                 max-width: 600px;
                 margin: 30px auto;
-                padding-top: 120px;
+                padding-top: 20px;
                 background-image: url(indeximg.jpg) no-repeat center 0;
             }
 
@@ -90,40 +86,39 @@
                 }
         </style>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $("#menu").kendoMenu();
             });
         </script>
-    </div>
-    <div class="row">
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="indeximg.jpg">
-            </a>
-            
-        </div>
-        <div class="jumbotron">
+        <div class="row" style="max-width: 1000px; align-content:center; margin:auto;">
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="indeximg.jpg">
+                </a>
 
-            <h2>我的美食口袋名單!</h2>
-            <p style="font-size:12px;">
-                <br>
-                現代美食在人們的生活中佔了很大的部份，不管經濟有多麼的不好、心情有多差、被老闆老師罵的有多臭頭，還是得飽餐一頓，就算食物在簡單，但是味道一定要夠好，美食簡直是人們生活中的大角色。
-                </br>
-                <br>
-                然而飲食已經不是單單滿足口腹之慾而已，它卻是一個重要的文化指標。 所以王爾德曾說 : 「我最無法忍受那些沒把美食認真看待的人！」可見飲食在人類生活中的重要性有多大了！
-                </br>
-                台灣美食未來的趨勢也許會邁向國際路線，融合傳統以及現代口味，主要是講求在衛生的環境，創造出無限的幸福，來滿足人類的無限慾望。
-                </br>
-                每個人對於美食的定義不同，所以對於美食總是有許多不同的看法，也才會造就出不同口味的美食，</br>
-                例如：薯條以前只有加胡椒粉，現在卻多出了許多種口味，像是梅甘粉、海苔粉、咖哩粉、辣椒芥末...等。</br>
-                許多種不同的口味開始被發掘出來，就因為美食的好吃與否是因人而異，所以才更顯得美食的價值吧！</br>
+            </div>
+            <div class="jumbotron" style="">
 
-                摘自<a href="http://www.shute.kh.edu.tw/~d09815a/web01/b.html">[關於美食]</a>部落格
-            </p>
+                <h2>我的美食口袋名單!</h2>
+                <p style="font-size:12px;">
+                    <br>
+                    現代美食在人們的生活中佔了很大的部份，不管經濟有多麼的不好、心情有多差、被老闆老師罵的有多臭頭，還是得飽餐一頓，就算食物在簡單，但是味道一定要夠好，美食簡直是人們生活中的大角色。
+                    </br>
+                    <br>
+                    然而飲食已經不是單單滿足口腹之慾而已，它卻是一個重要的文化指標。 所以王爾德曾說 : 「我最無法忍受那些沒把美食認真看待的人！」可見飲食在人類生活中的重要性有多大了！
+                    </br>
+                    台灣美食未來的趨勢也許會邁向國際路線，融合傳統以及現代口味，主要是講求在衛生的環境，創造出無限的幸福，來滿足人類的無限慾望。
+                    </br>
+                    每個人對於美食的定義不同，所以對於美食總是有許多不同的看法，也才會造就出不同口味的美食，</br>
+                    例如：薯條以前只有加胡椒粉，現在卻多出了許多種口味，像是梅甘粉、海苔粉、咖哩粉、辣椒芥末...等。</br>
+                    許多種不同的口味開始被發掘出來，就因為美食的好吃與否是因人而異，所以才更顯得美食的價值吧！</br>
+
+                    摘自<a href="http://www.shute.kh.edu.tw/~d09815a/web01/b.html">[關於美食]</a>部落格
+                </p>
+            </div>
         </div>
+
     </div>
-   
-    
 
 </body>
 </html>
